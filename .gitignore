@@ -1,0 +1,34 @@
+# dependencies
+node_modules
+.pnp
+.pnp.js
+
+# build
+dist
+build
+*.tsbuildinfo
+.next
+out
+
+# dev
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.log
+*.pid
+.DS_Store
+Thumbs.db
+
+# env
+.env
+.env.local
+.env.*.local
+
+# test
+coverage
+.nyc_output
+*.lcov
+
+# misc
+*.tgz
+*.tar.gz
