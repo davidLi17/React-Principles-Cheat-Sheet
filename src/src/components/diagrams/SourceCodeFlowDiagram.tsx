@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Highlight, themes } from "prism-react-renderer";
 import { PlayIcon, PauseIcon, ChevronRightIcon, GitBranchIcon } from "../icons";
 import { useAutoPlay } from "../../hooks/useAutoPlay";
 import { sourceCodeSteps } from "../../data";
+import { useKeyPress } from "ahooks";
 
 // 阶段配置
 const phaseConfig = {
@@ -216,32 +217,38 @@ export const SourceCodeFlowDiagram: React.FC = () => {
   const currentStepData = sourceCodeSteps[currentStep];
   const currentPhase = phaseConfig[currentStepData.phase];
 
-  // 键盘快捷键
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (
-        e.target instanceof HTMLInputElement ||
-        e.target instanceof HTMLTextAreaElement
-      )
-        return;
+  // 键盘快捷键 - 使用 ahooks 的 useKeyPress
+  const shouldIgnoreKeyInput = (event: KeyboardEvent) => {
+    return (
+      event.target instanceof HTMLInputElement ||
+      event.target instanceof HTMLTextAreaElement
+    );
+  };
 
-      switch (e.key) {
-        case "ArrowLeft":
-          prevStep();
-          break;
-        case "ArrowRight":
-          nextStep();
-          break;
-        case " ":
-          e.preventDefault();
-          toggle();
-          break;
-      }
-    };
+  const createKeyFilter = (keyName: string) => {
+    return (event: KeyboardEvent) => !shouldIgnoreKeyInput(event) && event.key.toLowerCase() === keyName;
+  };
 
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [prevStep, nextStep, toggle]);
+  useKeyPress(
+    createKeyFilter("arrowleft"),
+    () => prevStep(),
+    { exactMatch: true }
+  );
+
+  useKeyPress(
+    createKeyFilter("arrowright"),
+    () => nextStep(),
+    { exactMatch: true }
+  );
+
+  useKeyPress(
+    createKeyFilter(" "),
+    (event: KeyboardEvent) => {
+      event.preventDefault();
+      toggle();
+    },
+    { exactMatch: true }
+  );
 
   // 按阶段分组步骤
   const groupedSteps = {

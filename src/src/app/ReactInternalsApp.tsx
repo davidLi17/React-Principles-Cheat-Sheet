@@ -221,7 +221,7 @@ const AppContent: React.FC = () => {
         {/* Background decoration */}
         <div className="absolute top-0 left-0 w-full h-96 bg-blue-500/5 dark:bg-blue-900/10 blur-[100px] pointer-events-none"></div>
 
-        <div className="max-w-4xl mx-auto relative z-10 pb-20">
+        <div className="max-w-5xl mx-auto relative z-10 pb-20">
           {renderContent()}
         </div>
       </main>

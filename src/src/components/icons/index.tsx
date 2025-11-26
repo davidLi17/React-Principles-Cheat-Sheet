@@ -211,3 +211,32 @@ export const EditIcon: React.FC<IconProps> = (props) => (
     <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
   </IconWrapper>
 );
+
+export const ClockIcon: React.FC<IconProps> = (props) => (
+  <IconWrapper {...props}>
+    <circle cx="12" cy="12" r="10" />
+    <polyline points="12 6 12 12 16 14" />
+  </IconWrapper>
+);
+
+export const CheckIcon: React.FC<IconProps> = (props) => (
+  <IconWrapper {...props}>
+    <path d="M20 6 9 17l-5-5" />
+  </IconWrapper>
+);
+
+export const AlertTriangleIcon: React.FC<IconProps> = (props) => (
+  <IconWrapper {...props}>
+    <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
+    <path d="M12 9v4" />
+    <path d="M12 17h.01" />
+  </IconWrapper>
+);
+
+export const ExternalLinkIcon: React.FC<IconProps> = (props) => (
+  <IconWrapper {...props}>
+    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+    <polyline points="15 3 21 3 21 9" />
+    <line x1="10" x2="21" y1="14" y2="3" />
+  </IconWrapper>
+);
