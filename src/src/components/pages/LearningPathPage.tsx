@@ -672,7 +672,12 @@ export const LearningPathPage: React.FC = () => {
               {completedCount} / {totalSkills} 技能点
             </span>
           </div>
-          <Progress value={overallProgress} color="secondary" size="sm" />
+          <Progress
+            value={overallProgress}
+            color="secondary"
+            size="sm"
+            aria-label="总体学习进度"
+          />
         </motion.div>
 
         {/* 时间线 */}
@@ -761,6 +766,7 @@ export const LearningPathPage: React.FC = () => {
                             : "secondary"
                         }
                         className="flex-1"
+                        aria-label={`${stage.title}阶段进度`}
                       />
                       <span className="text-xs text-slate-400">
                         {stageCompleted}/{stage.skills.length}

@@ -1,3 +1,13 @@
+// 从拆分后的模块导入面试题数据
+import { allInterviewQuestions } from "./interviewQuestions";
+
+export {
+  allInterviewQuestions,
+  type InterviewQuestion,
+  type InterviewCategory,
+  type DifficultyLevel,
+} from "./interviewQuestions";
+
 export interface SearchItem {
   id: string;
   title: string;
@@ -5,55 +15,6 @@ export interface SearchItem {
   type: "concept" | "interview" | "page";
   page?: string;
 }
-
-// 面试题数据
-export const interviewQuestions = [
-  // Level 1
-  {
-    id: "q1",
-    question: "为什么不能直接修改 State？",
-    answer:
-      "1. React 需要通过 dispatch 通知才会触发更新流程。2. 直接修改对象引用，会破坏 PureComponent 和 Memo 的浅比较机制，导致组件不更新。",
-    difficulty: 1 as const,
-  },
-  {
-    id: "q2",
-    question: "React 生命周期 (Hooks版)？",
-    answer:
-      "Mount(挂载) -> Update(更新) -> Unmount(卸载)。主要通过 useEffect 的依赖数组控制：空数组=[]对应挂载，有依赖对应更新，返回函数对应卸载清理。",
-    difficulty: 1 as const,
-  },
-  // Level 2
-  {
-    id: "q3",
-    question: "React Fiber 解决了什么痛点？",
-    answer:
-      "解决了 Stack Reconciler (React 15) 递归更新阻塞主线程的问题。Fiber 将更新任务拆分为一个个单元，配合 Time Slicing (时间切片)，实现了可中断的异步渲染，避免页面掉帧。",
-    difficulty: 2 as const,
-  },
-  {
-    id: "q4",
-    question: "Key 的真正作用是什么？",
-    answer:
-      "Key 是 React Diff 算法中识别节点身份的唯一标识。它告诉 React 哪些元素在不同的渲染中是同一个，从而复用 DOM 节点（移动操作），而不是销毁重建（开销极大）。",
-    difficulty: 2 as const,
-  },
-  // Level 3
-  {
-    id: "q5",
-    question: "简述 React 的双缓存机制。",
-    answer:
-      "内存中同时存在 Current（屏幕显示）和 WorkInProgress（后台构建）两棵 Fiber 树。Diff 和 Render 在 WIP 树上进行，完成后只需将 root.current 指针指向 WIP 树即可完成提交。这保证了并发模式下更新的一致性，且避免了页面闪烁。",
-    difficulty: 3 as const,
-  },
-  {
-    id: "q6",
-    question: "为什么 Hooks 不能写在条件语句(if)里？",
-    answer:
-      "Fiber 节点上的 Hooks 是以链表形式存储的 (memoizedState)。React 在 Update 阶段完全依赖 Hooks 的调用顺序来索引数据。如果因为 if 条件导致 Hooks 执行数量或顺序发生变化，后面的 Hooks 就会取到错误的状态数据，导致逻辑崩盘。",
-    difficulty: 3 as const,
-  },
-];
 
 // 源码流程步骤数据
 export interface SourceCodeStep {
@@ -409,8 +370,7 @@ export const searchableItems: SearchItem[] = [
     page: "api",
   },
 
-  // 面试题
-  ...interviewQuestions.map((q) => ({
+  ...allInterviewQuestions.map((q) => ({
     id: q.id,
     title: q.question,
     content: q.answer,

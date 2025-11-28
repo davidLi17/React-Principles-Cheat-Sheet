@@ -11,6 +11,7 @@ const effectFlags = [
     desc: "新节点需要插入 DOM",
     color: "success",
     bgColor: "bg-green-500",
+    isAnimated: false,
   },
   {
     name: "Update",
@@ -18,13 +19,15 @@ const effectFlags = [
     desc: "节点属性需要更新",
     color: "warning",
     bgColor: "bg-yellow-500",
+    isAnimated: false,
   },
   {
     name: "Deletion",
     value: "0b0000000000001000",
     desc: "节点需要从 DOM 删除",
     color: "danger",
-    bgColor: "bg-red-500",
+    bgColor: "bg-gradient-to-r from-red-500 via-pink-500 to-rose-500",
+    isAnimated: true,
   },
   {
     name: "Passive",
@@ -32,6 +35,7 @@ const effectFlags = [
     desc: "useEffect 副作用",
     color: "secondary",
     bgColor: "bg-purple-500",
+    isAnimated: false,
   },
   {
     name: "LayoutMask",
@@ -39,6 +43,7 @@ const effectFlags = [
     desc: "useLayoutEffect 副作用",
     color: "primary",
     bgColor: "bg-blue-500",
+    isAnimated: false,
   },
 ];
 

@@ -4,5 +4,6 @@
  * @Description: 重导出新的模块化 App 组件
  */
 import "./global.css";
+// import Demo from "./TEST/OKEE_TABLE/softAndPage";
 import { ReactInternalsApp } from "./app/ReactInternalsApp";
 export default ReactInternalsApp;

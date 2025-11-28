@@ -1,0 +1,7 @@
+.bx-demo-operation {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 11px 0px;
+  border-bottom: 1px solid #ebebeb;
+}
