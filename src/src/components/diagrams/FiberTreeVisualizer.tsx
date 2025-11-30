@@ -1,9 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Chip, Tabs, Tab, Switch } from "@nextui-org/react";
-import { PlayIcon, RefreshCwIcon, ZapIcon, LayersIcon } from "../icons";
-import { useFiberVisualizer } from "../../hooks/useFiberVisualizer";
-import type { FiberNode } from "../../utils/fiberParser";
+import {
+  LayersIcon,
+  PlayIcon,
+  RefreshCwIcon,
+  ZapIcon,
+} from "@/components/icons";
+import { useFiberVisualizer } from "@/hooks/useFiberVisualizer";
+import type { FiberNode } from "@/utils/fiberParser";
+import { Chip, Switch, Tab, Tabs } from "@nextui-org/react";
+import { motion } from "framer-motion";
+import React, { useEffect, useState } from "react";
 
 // Fiber 节点标记类型
 type FiberFlag = "none" | "placement" | "update" | "deletion";

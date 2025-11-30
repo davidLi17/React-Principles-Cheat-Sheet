@@ -4,10 +4,10 @@
     "jsx": "preserve",
     "baseUrl": "./",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/src/*"]
     },
     "strict": false,
-    "types": ["react", "react-dom"],
+    "types": ["react", "react-dom", "node"],
     "target": "ES2017",
     "module": "ESNext",
     "moduleResolution": "bundler",
